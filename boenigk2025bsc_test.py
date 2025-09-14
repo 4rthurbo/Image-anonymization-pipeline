@@ -24,6 +24,7 @@ args = parser.parse_args()
 #detect faces
 checkpoint_dir = "images/temp/checkpoint"
 os.makedirs(checkpoint_dir, exist_ok=True)
+os.makedirs("images/export", exist_ok=True)
 
 predictions_faces = detect_faces(args.input_dir)
 
