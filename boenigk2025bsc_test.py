@@ -21,13 +21,19 @@ parser.add_argument("--oriented", type=str, default="deactivate", choices=["acti
 args = parser.parse_args()
 #---------------------------
 
-#detect faces
+# making sure, every ordner exists
 checkpoint_dir = "images/temp/checkpoint"
 os.makedirs(checkpoint_dir, exist_ok=True)
 os.makedirs("images/export", exist_ok=True)
 
+os.makedirs("images/temp/crops", exist_ok=True)
+os.makedirs("images/temp/masks", exist_ok=True)
+os.makedirs("images/temp/checkpoint", exist_ok=True)
+os.makedirs("images/temp/inpaintings", exist_ok=True)
+
 predictions_faces = detect_faces(args.input_dir)
 
+#detect faces
 if args.face_method == "inpaint":
     from src.run_exegan import run_exegan
 
