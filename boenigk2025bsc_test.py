@@ -6,6 +6,18 @@ from src.detect_faces import detect_faces
 from src.detect_plates import detect_plates_filtered
 from src.anonymize_methods import blur_region, pixelate_region, mask_region
 
+# making sure, every ordner exists
+checkpoint_dir = "images/temp/checkpoint"
+os.makedirs(checkpoint_dir, exist_ok=True)
+os.makedirs("images/export", exist_ok=True)
+
+os.makedirs("images/temp/crops", exist_ok=True)
+os.makedirs("images/temp/masks", exist_ok=True)
+os.makedirs("images/temp/checkpoint", exist_ok=True)
+os.makedirs("images/temp/inpaintings", exist_ok=True)
+
+
+
 # clear temps
 from src.clear_temp import clear_temp
 clear_temp()
@@ -20,16 +32,6 @@ parser.add_argument("--oriented", type=str, default="deactivate", choices=["acti
 
 args = parser.parse_args()
 #---------------------------
-
-# making sure, every ordner exists
-checkpoint_dir = "images/temp/checkpoint"
-os.makedirs(checkpoint_dir, exist_ok=True)
-os.makedirs("images/export", exist_ok=True)
-
-os.makedirs("images/temp/crops", exist_ok=True)
-os.makedirs("images/temp/masks", exist_ok=True)
-os.makedirs("images/temp/checkpoint", exist_ok=True)
-os.makedirs("images/temp/inpaintings", exist_ok=True)
 
 predictions_faces = detect_faces(args.input_dir)
 
